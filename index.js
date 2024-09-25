@@ -1,6 +1,5 @@
 import express, { response } from "express";
 import axios from "axios";
-import bodyParser from "body-parser";
 
 const app = express();
 const port = 3000;
@@ -12,6 +11,7 @@ const API_KEY = "675d73d6a12a6bc959f9af6df91ec980";
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// function to capitalize strings
 function capitalizeWords(description) {
     return description
         .split(' ') // Split the string into an array of words
@@ -27,17 +27,21 @@ app.post("/current-weather", async (req, res) => {
     const city = req.body.city;
     const countryCode = req.body.countrycode;
     try {
+
+        // API to translate city name into longitude and latitude coordinates using Openweather API
         const response = await axios.get(API_URL + `q=${city},${countryCode}&limit=1&appid=${API_KEY}`);
 
-        const latitude = response.data[0].lat;
-        const longitude = response.data[0].lon;
+        const latitude = response.data[0].lat; //latitude gotten from the response
+        const longitude = response.data[0].lon; //longitude gotten from the response
 
+        // API to use the latitude and longitude to get the current weather condition of the city using Openweather API
         const result = await axios.get(API_URL2 + `lat=${latitude}&units=metric&exclude=hourly,daily&lon=${longitude}&appid=${API_KEY}`);
-        const icon = result.data.current.weather[0].icon;
 
-        const description = result.data.current.weather[0].description;
-        const capitalizedDescription = capitalizeWords(description);
+        const icon = result.data.current.weather[0].icon; //Icon for each weather condition gotten from the result
+        const description = result.data.current.weather[0].description; //weather description output
+        const capitalizedDescription = capitalizeWords(description); //captitlize the description as it comes in lowercase
 
+        // redering the responses and results to the front end
         res.render("index.ejs", {
             city: response.data[0].name,
             state: response.data[0].state,
@@ -49,7 +53,7 @@ app.post("/current-weather", async (req, res) => {
             icon: `https://openweathermap.org/img/wn/${icon}@2x.png`,
             country: req.body.countryName
         });
-    } catch (error) {
+    } catch (error) { //catching errrors that could occur
         if (error.response) {
             // Request was made and the server responded with an error status code
             console.error("Error Response Data:", error.response.message);
