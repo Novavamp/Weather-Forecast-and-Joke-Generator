@@ -24,8 +24,10 @@ app.get("/", (req, res) => {
 });
 
 app.post("/current-weather", async (req, res) => {
+    // get value from the frontend form
     const city = req.body.city;
     const countryCode = req.body.countrycode;
+
     try {
 
         // API to translate city name into longitude and latitude coordinates using Openweather API
@@ -78,6 +80,7 @@ app.get("/joke", (req, res) => {
 app.post("/joke", async (req, res) => {
     const API_URL = "https://v2.jokeapi.dev/joke/";
 
+    // remove the default "on" value gotten from an empty radio button on the frontend form
     let category = req.body.category;
     if (Array.isArray(category)) {
         category = category.filter(value => value !== 'on');
@@ -85,15 +88,23 @@ app.post("/joke", async (req, res) => {
         // If it's a single "on" value, ignore it
         category = [];
     }
+
+    // get value from the frontend form
     const type = req.body.type;
     const search = req.body.search;
     try {
+        // Making an API request from the public JokeAPI
         const result = await axios.get(API_URL + category + `?type=${type}&contains=${search}`);
-        res.render("jokes.ejs", { result: result.data, type: capitalizeWords(result.data.type) });
+
+        // rendering the results to the front end
+        res.render("jokes.ejs", {
+            result: result.data,
+            type: capitalizeWords(result.data.type) //capitalize the joke type and send to the frontend
+        });
 
     } catch (error) {
         console.error('Error fetching jokes:'); // Log the error details for debugging
-        res.render("jokes.ejs", { error: "Check your selections and try again." });
+        res.render("jokes.ejs", { error: "Check your selections and try again." }); //error message to send to the frontend
     }
 });
 
