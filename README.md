@@ -75,7 +75,7 @@ To run these apps locally, follow these steps:
 5. Run the app:
 
    ```bash
-   npm start
+   node index.js
    ```
 
 6. Access the app at:
