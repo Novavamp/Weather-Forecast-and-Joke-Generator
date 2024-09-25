@@ -5,7 +5,7 @@ const app = express();
 const port = 3000;
 const API_URL = "http://api.openweathermap.org/geo/1.0/direct?";
 const API_URL2 = "https://api.openweathermap.org/data/3.0/onecall?";
-const API_KEY = "675d73d6a12a6bc959f9af6df91ec980";
+const API_KEY = "";
 
 
 app.use(express.static("public"));
