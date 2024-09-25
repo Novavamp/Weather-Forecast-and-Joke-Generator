@@ -70,7 +70,7 @@ To run these apps locally, follow these steps:
 4. Set up your API keys:
 
    - Obtain an API key from [OpenWeather](https://home.openweathermap.org/users/sign_up) for the Weather Forecast app.
-   - Create and add your API key in the index.js.
+   - Create and add your API key to the index.js.
 
 5. Run the app:
 
