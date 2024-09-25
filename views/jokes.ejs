@@ -1,0 +1,51 @@
+<%- include('partials/header.ejs') %>
+
+    <form class="container" action="/joke" method="post">
+        <div class="jokes-form">
+            <div class="select-cat">Choose category</div>
+            <label for="category">Any<input type="radio" name="category" value="Any" id="category" checked></label>
+
+            <label for="custom">Custom<input type="radio" name="category" id="custom"></label>
+            <label for="pro">Programming<input type="checkbox" name="category" value="Programming" id="pro" disabled></label>
+            <label for="misc">Misc<input type="checkbox" name="category" value="Misc" id="misc" disabled></label>
+            <label for="dark">Dark<input type="checkbox" name="category" value="Dark" id="dark" disabled></label>
+            <label for="pun">Pun<input type="checkbox" name="category" value="Pun" id="pun" disabled></label>
+            <label for="spooky">Spooky<input type="checkbox" name="category" value="Spooky" id="spooky" disabled></label>
+            <label for="christmas">Christmas<input type="checkbox" name="category" value="Christmas" id="christmas" disabled></label>
+        </div>
+
+        <div class="jokes-form search-div">
+            <label class="select-cat type">Joke type</label>
+            <label for="single">Single</label><input type="checkbox" name="type" value="single" id="single" checked>
+            <label for="twopart">Two part</label><input type="checkbox" name="type" value="twopart" id="twopart" checked>
+            <label for="search">Search for a word</label>
+            <input class="search" type="text" name="search" id="search" placeholder="(optional)">
+        </div>
+        <input id="submit-btn" type="submit" value="L E T 'S  G O!">
+    </form>
+
+    <% if (locals.result) { %>
+     
+    <div class="output">
+
+        <% if (result.type === "single") { %>
+            <div><strong>Joke:</strong> <%= result.joke %></div>
+            <br><hr>
+            <div class="joke-cat"><em>Category:</em> <%= result.category %></div>
+        <% } else { %>                
+                <div><strong>Setup:</strong> <%= result.setup %></div>
+                <div><strong>Delivery:</strong> <%= result.delivery %></div>
+                <br><hr>
+                <div class="joke-cat"><em>Category:</em> <%= result.category %></div>
+            <% } %>   
+    </div>
+
+    <% } if (locals.error) { %>
+        <div class="output error">
+            <%= error %>
+        </div>
+    <% } %>
+
+    <script src="jokes.js"></script>
+    <%- include('partials/footer.ejs') %>
+    <script>document.querySelector(".footer").classList.add("footer-margin");</script>
