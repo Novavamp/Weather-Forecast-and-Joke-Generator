@@ -208,6 +208,7 @@ countries.forEach(country => {
     countrySelect.appendChild(option);
 });
 
+// function for updating the hidden inputs value
 function updateHiddenInput() {
     const countrySelect = document.getElementById("country");
     const countryNameInput = document.getElementById("countryName");
