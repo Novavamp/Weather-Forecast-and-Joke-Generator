@@ -1,11 +1,14 @@
 import express, { response } from "express";
 import axios from "axios";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 const port = 3000;
 const API_URL = "http://api.openweathermap.org/geo/1.0/direct?";
 const API_URL2 = "https://api.openweathermap.org/data/3.0/onecall?";
-const API_KEY = "";
+const API_KEY = process.env.API_KEY;
 
 
 app.use(express.static("public"));
