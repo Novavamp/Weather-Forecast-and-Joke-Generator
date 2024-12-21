@@ -7,7 +7,7 @@ This project consists of two web applications:
 1. **Weather Forecasting Web App** – Displays current weather conditions for any city worldwide.
 2. **Joke Generator Web App** – Generates fun jokes based on user preferences.
 
-Both apps demonstrate API integration, form handling, and responsive web design using a combination of frontend and backend technologies.
+Both apps demonstrate API integration, form handling, and responsive web design using a combination of frontend and backend technologies. (https://weather-forecast-and-joke-generator.onrender.com/)
 
 ## Features
 
