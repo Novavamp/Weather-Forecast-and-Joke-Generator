@@ -436,3 +436,19 @@ hr {
     color: #14362829;
     border: 0.5px solid;
 }
+
+/* Portfolio polish: responsive layout, clearer controls, and accessible focus states. */
+:where(button, input, select, a) { transition: color .18s ease, background-color .18s ease, border-color .18s ease, box-shadow .18s ease; }
+:where(a, button, input, select):focus-visible { outline: 3px solid #2f855a; outline-offset: 3px; }
+.container-1, .grid-container, .jokes-form, .output { box-shadow: 0 12px 32px rgba(13, 55, 30, .12); }
+.weather-form input:not([type="submit"]):focus, .jokes-form input:focus, .search:focus, select:focus { border: 2px solid #2f855a; }
+@media (max-width: 760px) {
+  header { flex-wrap: wrap; justify-content: center; gap: 12px; font-size: 1rem; }
+  .div1, .div2, .div3 { width: 100%; }
+  .flex { flex-direction: column; gap: 24px; padding: 16px; box-sizing: border-box; }
+  .container-1, .container-2, section.container-2 { width: 100%; max-width: 620px; box-sizing: border-box; }
+  .grid-container { width: 100%; max-width: 100%; box-sizing: border-box; padding: 24px 16px; }
+  .response { gap: 18px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .jokes-form { width: min(94%, 680px); flex-wrap: wrap; padding: 18px; box-sizing: border-box; }
+  .output { width: min(90%, 680px) !important; box-sizing: border-box; margin-bottom: 0; }
+}
