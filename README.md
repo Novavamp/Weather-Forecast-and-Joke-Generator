@@ -1,4 +1,10 @@
-# Weather Forecast and Joke Generator Web Apps
+<div align="center">
+
+# Weather Forecast & Joke Generator
+
+![Node.js](https://img.shields.io/badge/Node.js-runtime-339933?logo=nodedotjs&logoColor=white) ![Express](https://img.shields.io/badge/Express-web%20framework-000000?logo=express&logoColor=white)
+
+</div>
 
 ## Overview
 
